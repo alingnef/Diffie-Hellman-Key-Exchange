@@ -205,6 +205,7 @@ $$
 
 Như vậy, ta đã tìm được giá trị của $x$ thỏa mãn yêu cầu bài toán. 
 Ảnh minh họa :
+
 <img width="1605" height="980" alt="{C9E9B2BF-D1A8-4DE2-B707-ED55216FDB0E}" src="https://github.com/user-attachments/assets/f26950fd-db54-4336-a7b0-33321736f3a0" />
 
 Đó chính là cách giải bài toán DLP dựa trên **thuật toán Pohlig–Hellman**. Tuy hay là thế nhưng thuật toán này cũng cần một vài điều kiện nhất định để hoạt động tốt nhất : 
@@ -241,7 +242,7 @@ Ta có :
 Như vậy, nghiệm của phương trình logarit rời rạc trên là $x=4$.
 
 Code brute-force : 
-```python=
+```python
 g = ?
 h = ?
 p = ?
