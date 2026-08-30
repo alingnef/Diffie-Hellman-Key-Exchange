@@ -4,22 +4,25 @@ Trước khi vào phần này thì ta sẽ điểm sơ qua về một vài lý t
 
 # DIFFIE-HELLMAN
 ## Lịch sử
-**Giao thức trao đổi khóa Diffie–Hellman (D-H)** là một phương pháp trao đổi khóa được phát minh sớm nhất trong mật mã học. Phương pháp trao đổi khóa **Diffie–Hellman** cho phép hai bên (người, thực thể giao tiếp) thiết lập một khóa bí mật chung để mã hóa dữ liệu sử dụng trên kênh truyền thông không an toàn mà không cần có sự thỏa thuận trước về khóa bí mật giữa hai bên. Khóa bí mật tạo ra sẽ được sử dụng để mã hóa dữ liệu với phương pháp **mã hóa khóa đối xứng** (ví dụ như **AES**)
+**Giao thức trao đổi khóa Diffie–Hellman (DH)** là một phương pháp trao đổi khóa được phát minh sớm nhất trong mật mã học. Phương pháp trao đổi khóa **Diffie–Hellman** cho phép hai bên (người, thực thể giao tiếp) thiết lập một khóa bí mật chung để mã hóa dữ liệu sử dụng trên kênh truyền thông không an toàn mà không cần có sự thỏa thuận trước về khóa bí mật giữa hai bên. Khóa bí mật tạo ra sẽ được sử dụng để mã hóa dữ liệu với phương pháp **mã hóa khóa đối xứng** (ví dụ như **AES**)
 
 Giao thức này được công bố đầu tiên bởi Whitfield Diffie và Martin Hellman vào năm 1976, dù rằng trước đó vài năm nó đã được phát minh một cách độc lập trong GCHQ, cơ quan tình báo Anh, bởi James H. Ellis, Clifford Cocks và Malcolm J. Williamson nhưng được giữ bí mật. Năm 2002, Hellman đề xuất thuật toán nên được gọi là trao đổi khóa Diffie–Hellman–Merkle để ghi nhận sự đóng góp của Ralph Merkle trong phát minh lĩnh vực mật mã hóa khóa công khai (Hellman, 2002).
 
 ## Thuật toán
-- **Bước 1** : Chọn một số nguyên tố **lớn** $p$ để tạo nên tập các thặng dư thu gọn theo Modulo $p$ ($\mathbb{Z}^{*}_{p}$), và chọn ra một phần tử sinh $g$ của $\mathbb{Z}^{*}_{p}$. Cặp số $(p,g)$ là cặp số được hai bên Alice và Bob thỏa thuận với nhau từ trước và sẽ được gửi công khai.
+- **Bước 1** : Chọn một số nguyên tố **lớn** $p$ để tạo nên tập các thặng dư thu gọn theo Modulo $p$ ($\mathbb{Z}^{\ast}_{p}$), và chọn ra một phần tử sinh $g$ của $\mathbb{Z}^{\ast}_{p}$. Cặp số $(p,g)$ là cặp số được hai bên Alice và Bob thỏa thuận với nhau từ trước và sẽ được gửi công khai.
 - **Bước 2** : Mỗi bên Alice và Bob sẽ tự tạo cho mình **một khóa bí mật** $a$, $b$. Khóa này không nhất thiết phải là số nguyên tố, và nó hoàn toàn được bảo mật, chỉ có người sở hữu mới được biết.
-- **Bước 3** : Mỗi bên sẽ tạo cho mình **một khóa công khai** (ký hiệu là $A$ và $B$) theo công thức sau : 
+- **Bước 3** : Mỗi bên sẽ tạo cho mình **một khóa công khai** (ký hiệu là $A$ và $B$) theo công thức sau :
+
 $$
 \begin{cases}
 A\equiv g^a \pmod{p}\\
 B\equiv g^b \pmod{p}
 \end{cases}
 $$
+
 Vì đó là khóa công khai nên ai cũng sẽ biết được hai giá trị đó
-- **Bước 4** : Hai bên sẽ trao đổi hai giá trị $A$ và $B$ cho nhau. Alice sẽ nhận $B$ và Bob nhận $A$ và khi đó, mỗi bên sẽ lấy giá trị mình nhận được đem đi tính phép mũ với khóa bí mật của bản thân một lần nữa như sau : 
+- **Bước 4** : Hai bên sẽ trao đổi hai giá trị $A$ và $B$ cho nhau. Alice sẽ nhận $B$ và Bob nhận $A$ và khi đó, mỗi bên sẽ lấy giá trị mình nhận được đem đi tính phép mũ với khóa bí mật của bản thân một lần nữa như sau :
+
 $$
 \begin{cases}
 s_A\equiv B^a\pmod{p}\\
@@ -77,7 +80,8 @@ $$
 g^x=h
 $$
 
-Trong ngữ cảnh phổ biến nhất, cho nhóm nhân $\mathbb{Z}^*_p$ với $p$ là một số nguyên tố lớn, $g$ là phần tử sinh và $h\in\mathbb{Z}^*_p$. Tìm số mũ $x$ sao cho : 
+Trong ngữ cảnh phổ biến nhất, cho nhóm nhân $\mathbb{Z}^*_p$ với $p$ là một số nguyên tố lớn, $g$ là phần tử sinh và $h\in\mathbb{Z}^*_p$. Tìm số mũ $x$ sao cho :
+
 $$
 g^x\equiv h\pmod{p}
 $$
@@ -179,7 +183,8 @@ $$
 \Leftrightarrow x\equiv r_i\pmod{p_i^{e_i}}
 $$
 
-Và sau khi tìm được hết tất cả giá trị $r_i$ tương ứng với từng thừa số nguyên tố $p_i^{e_i}$ của $\phi(p)$, ta sẽ lập được một hệ phương trình như sau : 
+Và sau khi tìm được hết tất cả giá trị $r_i$ tương ứng với từng thừa số nguyên tố $p_i^{e_i}$ của $\phi(p)$, ta sẽ lập được một hệ phương trình như sau :
+
 $$
 \begin{cases}
 x \equiv r_1 \pmod{p_1^{e_1}} \\
@@ -197,6 +202,7 @@ $$
 Như vậy, ta đã tìm được giá trị của $x$ thỏa mãn yêu cầu bài toán. 
 Ảnh minh họa : ![image](https://hackmd.io/_uploads/BJmLU_Xgxl.png)
 
+
 Đó chính là cách giải bài toán DLP dựa trên **thuật toán Pohlig–Hellman**. Tuy hay là thế nhưng thuật toán này cũng cần một vài điều kiện nhất định để hoạt động tốt nhất : 
 - Trước hết là về vấn đề phân tích thừa số nguyên tố. Trong thực tế, Modulo $p$ (là số nguyên tố) của ta sẽ có độ dài là rất lớn ($>2048bits$). Khi đó, $\phi(p)=p-1$ cũng sẽ có độ dài tương tự với $p$. Chính vì vậy việc phân tích $\phi(p)$ thành tích các số nguyên tố nhỏ hơn sẽ mất rất nhiều thời gian, thậm chí là không thể.
 - Tuy nhiên, việc phân tích có thể bị qua mặt dễ dàng nếu như $\phi(p)$ của ta là một **[Smooth Number](https://en.wikipedia.org/wiki/Smooth_number)**. Về cơ bản, Smooth number là một số nguyên dương mà tất cả các thừa số nguyên tố của nó đều nhỏ hơn hoặc bằng một giá trị nào đó. Ví dụ : $60=2^2.3.5$ là **5-smooth** vì $2,3,5\leq5$
@@ -207,7 +213,8 @@ Những điều kiện trên sẽ giúp cho thuật toán **Pohlig-Hellman** ho�
 
 Và trong số đó, ta có cách chọn $p=2q+1$, với $q$ là một số nguyên tố lớn nào đó. Tại vì sao cách chọn $p$ này lại được ưa chuộng? Bởi vì : 
 - $\phi(p)=p-1=2q$ chỉ có đúng hai thừa số nguyên tố là $2$ và $q$.
-- Với $2$ thì sẽ chẳng có gì đáng để nói cả, ta có thể lập được phương trình modulo đầu tiên có dạng : 
+- Với $2$ thì sẽ chẳng có gì đáng để nói cả, ta có thể lập được phương trình modulo đầu tiên có dạng :
+
 $$
 x\equiv r_1\pmod{2}, \hspace{4mm} r_i\in [0;2]
 $$
