@@ -204,8 +204,8 @@ x\pmod{\phi(p)}
 $$
 
 Như vậy, ta đã tìm được giá trị của $x$ thỏa mãn yêu cầu bài toán. 
-Ảnh minh họa : ![image](https://hackmd.io/_uploads/BJmLU_Xgxl.png)
-
+Ảnh minh họa :
+<img width="1605" height="980" alt="{C9E9B2BF-D1A8-4DE2-B707-ED55216FDB0E}" src="https://github.com/user-attachments/assets/f26950fd-db54-4336-a7b0-33321736f3a0" />
 
 Đó chính là cách giải bài toán DLP dựa trên **thuật toán Pohlig–Hellman**. Tuy hay là thế nhưng thuật toán này cũng cần một vài điều kiện nhất định để hoạt động tốt nhất : 
 - Trước hết là về vấn đề phân tích thừa số nguyên tố. Trong thực tế, Modulo $p$ (là số nguyên tố) của ta sẽ có độ dài là rất lớn ($>2048bits$). Khi đó, $\phi(p)=p-1$ cũng sẽ có độ dài tương tự với $p$. Chính vì vậy việc phân tích $\phi(p)$ thành tích các số nguyên tố nhỏ hơn sẽ mất rất nhiều thời gian, thậm chí là không thể.
