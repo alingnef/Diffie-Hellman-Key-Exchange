@@ -1,7 +1,3 @@
-Trước khi vào phần này thì ta sẽ điểm sơ qua về một vài lý thuyết toán học hay, quan trọng cần dùng và khó **[ở đây](https://hackmd.io/@hlinh1908/SJ3IQWrW1x)** 
-
-
-
 # DIFFIE-HELLMAN
 ## Lịch sử
 **Giao thức trao đổi khóa Diffie–Hellman (DH)** là một phương pháp trao đổi khóa được phát minh sớm nhất trong mật mã học. Phương pháp trao đổi khóa **Diffie–Hellman** cho phép hai bên (người, thực thể giao tiếp) thiết lập một khóa bí mật chung để mã hóa dữ liệu sử dụng trên kênh truyền thông không an toàn mà không cần có sự thỏa thuận trước về khóa bí mật giữa hai bên. Khóa bí mật tạo ra sẽ được sử dụng để mã hóa dữ liệu với phương pháp **mã hóa khóa đối xứng** (ví dụ như **AES**)
@@ -9,7 +5,7 @@ Trước khi vào phần này thì ta sẽ điểm sơ qua về một vài lý t
 Giao thức này được công bố đầu tiên bởi Whitfield Diffie và Martin Hellman vào năm 1976, dù rằng trước đó vài năm nó đã được phát minh một cách độc lập trong GCHQ, cơ quan tình báo Anh, bởi James H. Ellis, Clifford Cocks và Malcolm J. Williamson nhưng được giữ bí mật. Năm 2002, Hellman đề xuất thuật toán nên được gọi là trao đổi khóa Diffie–Hellman–Merkle để ghi nhận sự đóng góp của Ralph Merkle trong phát minh lĩnh vực mật mã hóa khóa công khai (Hellman, 2002).
 
 ## Thuật toán
-- **Bước 1** : Chọn một số nguyên tố **lớn** $p$ để tạo nên tập các thặng dư thu gọn theo Modulo $p$ ($\mathbb{Z}^{\ast}_{p}$), và chọn ra một phần tử sinh $g$ của $\mathbb{Z}^{\ast}_{p}$. Cặp số $(p,g)$ là cặp số được hai bên Alice và Bob thỏa thuận với nhau từ trước và sẽ được gửi công khai.
+- **Bước 1** : Chọn một số nguyên tố **lớn** $p$ để tạo nên tập các thặng dư thu gọn theo Modulo $p$ ($\mathbb{Z}^{\ast}\_{p}$), và chọn ra một phần tử sinh $g$ của $\mathbb{Z}^{\ast}_{p}$. Cặp số $(p,g)$ là cặp số được hai bên Alice và Bob thỏa thuận với nhau từ trước và sẽ được gửi công khai.
 - **Bước 2** : Mỗi bên Alice và Bob sẽ tự tạo cho mình **một khóa bí mật** $a$, $b$. Khóa này không nhất thiết phải là số nguyên tố, và nó hoàn toàn được bảo mật, chỉ có người sở hữu mới được biết.
 - **Bước 3** : Mỗi bên sẽ tạo cho mình **một khóa công khai** (ký hiệu là $A$ và $B$) theo công thức sau :
 
@@ -59,11 +55,12 @@ Lấy ví dụ :
 - Sau khi trao đổi hai giá trị công khai $A$ và $B$, Alice sẽ tính $s_A\equiv (B)^6\pmod{23}\equiv 19^6\pmod{23}\equiv 2$ và Bob cũng sẽ tính $s_B\equiv (A)^6\pmod{23}\equiv 8^{15}\pmod{23}\equiv 2$
 - Như vậy, cả hai đều đã trao đổi thành công **khóa bí mật** của nhau là $s=2$.
 
-Ta có thể minh họa quá trình trao đổi khóa kia thông qua hình vẽ sau : 
+Ta có thể minh họa quá trình trao đổi khóa kia thông qua hình vẽ sau :
+
 ![image](https://hackmd.io/_uploads/HyHOOcfxgl.png)
 
 
-Và đó là tất cả những gì mà trao đổi khóa **Diffie-Hellman** hoạt động!!!
+Và đó là tất cả những gì mà thuật toán trao đổi khóa **Diffie-Hellman** hoạt động!!!
 
 
 
@@ -75,18 +72,19 @@ Và đó là tất cả những gì mà trao đổi khóa **Diffie-Hellman** ho�
 
 Ta nhắc lại rằng : Với hai số thực $x,y$ và cơ số $a>0$, $a≠1$, nếu $a^x=y$ thì $x$ được gọi là logarit cơ số $a$ của $y$, ký hiệu $x=log_ay$.
 
-Ta cũng định nghĩa tương tự với trường số nguyên : Cho một nhóm tuần hoàn (cyclic group) $G$ có một phần tử sinh $g$, và một phần tử $h\in G$. Tìm số mũ $x$ sao cho : 
+Ta cũng định nghĩa tương tự với trường số nguyên : Cho một nhóm tuần hoàn (cyclic group) $G$ có một phần tử sinh $g$, và một phần tử $h\in G$. Tìm số mũ $x$ sao cho :
+
 $$
 g^x=h
 $$
 
-Trong ngữ cảnh phổ biến nhất, cho nhóm nhân $\mathbb{Z}^*_p$ với $p$ là một số nguyên tố lớn, $g$ là phần tử sinh và $h\in\mathbb{Z}^*_p$. Tìm số mũ $x$ sao cho :
+Trong ngữ cảnh phổ biến nhất, cho nhóm nhân $\mathbb{Z}^{\ast}\_p$ với $p$ là một số nguyên tố lớn, $g$ là phần tử sinh và $h\in\mathbb{Z}^{\ast}\_p$. Tìm số mũ $x$ sao cho :
 
 $$
 g^x\equiv h\pmod{p}
 $$
 
-Có thể nói, đây là một bài toán khó bởi vì cho đến nay chưa ai tìm ra thuật toán chạy trong thời gian đa thức theo kích thước đầu vào (số bit của $p$) để giải DLP trong nhóm $\mathbb{Z}^*_p$
+Có thể nói, đây là một bài toán khó bởi vì cho đến nay chưa ai tìm ra thuật toán chạy trong thời gian đa thức theo kích thước đầu vào (số bit của $p$) để giải DLP trong nhóm $\mathbb{Z}^*_p$.
 
 Chính vì điều đó mà DLP có tính ứng dụng cao trong mật mã học, ví dụ như : **Trao đổi khóa Diffie–Hellman**, **Mật mã ElGamal và DSA/ECDSA**,...
 
@@ -104,7 +102,7 @@ Thuật toán : Cho $a$ là phần tử sinh của $Z_n^*$, $b$ là số nguyên
 - Tra bảng tìm cặp $(i,j)$ thỏa $a^j \mod(n) = b.(a^{-m})^i \mod(n)$
 - Khi đó, $log_a b = m.i + j$
 >Ví dụ : Tính $log_{17} 15$ trên $Z_{97}^*$
-```python= 
+```python
 import math
 def baby_step_giant_step(a, b, n):
     m = math.isqrt(n) + 1  
@@ -134,7 +132,8 @@ print(log)
 
 Thuật toán : Tìm $x$ thỏa $g^x\equiv h\pmod{p}$. Ta có : 
 - Tính $n=\phi(p)=p-1=p_1^{e_1}.p_2^{e_2}...p_k^{e_k}=\prod_{i=1}^{k} p_i$
-- Đặt $x=p_i^{e_i}.q_i+r_i$, ta có : 
+- Đặt $x=p_i^{e_i}.q_i+r_i$, ta có :
+
 $$
 g^x\equiv h\pmod{p}
 $$
@@ -155,12 +154,14 @@ $$
 \Leftrightarrow g^{q_i.\phi(p)}.g^{r_i.\phi(p)/p_i^{e_i}}\equiv h^{\phi(p)/p_i^{e_i}}
 $$
 
-Ta có định lý Euler như sau : Với $a<n$ và $gcd(a,n)=1$ thì : 
+Ta có định lý Euler như sau : Với $a<n$ và $gcd(a,n)=1$ thì :
+
 $$
 a^{\phi(n)} \equiv 1 \pmod{n}
 $$
 
-Và vì $g<p$ và $gcd(g,p)=1$ nên ta có : 
+Và vì $g<p$ và $gcd(g,p)=1$ nên ta có :
+
 $$
 g^{q_i.\phi(p)}\equiv 1^{q_i}\pmod{p}\equiv 1\pmod{p}
 $$
@@ -169,12 +170,14 @@ $$
 \Leftrightarrow g^{r_i.\phi(p)/p_i^{e_i}}\equiv h^{\phi(p)/p_i^{e_i}}\pmod{p}
 $$
 
-Với các giá trị đã biết là $p_i^{e_i},\phi(p),g,h$, ta sẽ brute-force $r_i\in [0, p_i^{e_i}-1]$ sao cho nó thỏa mãn : 
+Với các giá trị đã biết là $p_i^{e_i},\phi(p),g,h$, ta sẽ brute-force $r_i\in [0, p_i^{e_i}-1]$ sao cho nó thỏa mãn :
+
 $$
 \Leftrightarrow g^{r_i.\phi(p)/p_i^{e_i}}\equiv h^{\phi(p)/p_i^{e_i}}\pmod{p}
 $$ 
 
-là được. Sau khi có được giá trị $r_i$ cần tìm. ta sẽ quay lại với điều kiện đặt $x$ ban đầu là : 
+là được. Sau khi có được giá trị $r_i$ cần tìm. ta sẽ quay lại với điều kiện đặt $x$ ban đầu là :
+
 $$
 x=p_i^{e_i}.q_i+r_i
 $$
@@ -194,7 +197,8 @@ x \equiv r_k \pmod{p_k^{e_k}}
 \end{cases}
 $$
 
-Áp dụng CRT cho hệ phương trình trên ta có : 
+Áp dụng CRT cho hệ phương trình trên ta có :
+
 $$
 x\pmod{\phi(p)}
 $$
