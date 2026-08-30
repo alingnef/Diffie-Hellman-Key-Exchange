@@ -231,7 +231,7 @@ $$
 
 
 ### Brute-force
-Tất nhiên rồi, thuật toán được yêu thích nhất của chúng ta đây =))). Cũng chẳng cần giải thích gì nhiều, cho ví dụ sau : Tìm $x$ thỏa : $3^x\equiv 13\pmod{17}$
+Tất nhiên rồi, thuật toán được yêu thích nhất của chúng ta đây =))). Cũng chẳng cần giải thích gì nhiều, cho ví dụ sau : Tìm $x$ thỏa mãn $3^x\equiv 13\pmod{17}$
 
 Ta có : 
 - $3^1\equiv 3\pmod{17}$
